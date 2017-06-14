@@ -1,0 +1,50 @@
+<h2>Example of creating an album</h2>
+<p>
+    Ask for permission <input type="button" value="Get permission" onclick="LightBulb.Example.newPermission();"/>
+    Create album <input type="button" value="Create album" onclick="LightBulb.Example.create();"/>
+</p>
+
+<pre class="js">
+LightBulb.albums.createAlbum({
+    creator: 'creatorName',
+    name: 'yourAlbumName',
+    description: 'albumDescriptions',
+    },
+    function (response) {
+        alert('Album created with the following id: ' + response.id);
+    }
+);
+</pre>
+
+
+<script type="text/javascript">
+    LightBulb.Example = {
+        newPermission: function(){
+            LightBulb({
+                apikey:"288048857874241",
+                permissions:"user_photos",
+                forcedPermission:true,
+                callback:function (data) {
+                }
+            });
+        },
+        create: function(){
+            LightBulb.albums.createAlbum(
+                    {
+                        user: 'me',
+                        creator: 'LightBulb',
+                        name: 'LightBulb',
+                        description: 'This album is created by you via project LightBulb :)'
+                    },
+                    function(response) {
+                        if(response.error){
+                            alert(response.error.message);
+                        }else{
+                            alert('Album created with the following id: ' + response.id);
+                        }
+                    }
+            );
+        }
+    }
+
+</script>

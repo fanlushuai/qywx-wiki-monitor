@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <title>Project LightBulb - The Easiest wrapper for Facebook JS-SDK </title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+        <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
+        <script type="text/javascript" src="js/jquery.snippet.js"></script>
+        <script type="text/javascript" src="/js/lb.core.js"></script>
+        <script type="text/javascript" src="/js/lb.users.js"></script>
+        <script type="text/javascript" src="/js/lb.albums.js"></script>
+        <script type="text/javascript" src="/js/lb.events.js"></script>
+        <script type="text/javascript" src="/js/lb.friendlists.js"></script>
+        <script type="text/javascript" src="/js/lb.dialogs.js"></script>
+        <script type="text/javascript" src="/js/lb.statuses.js"></script>
+        <script type="text/javascript" src="/js/lb.photos.js"></script>
+        <script type="text/javascript" src="/js/lb.posts.js"></script>
+        <script type="text/javascript" src="/js/lb.utility.js"></script>
+        <link rel="stylesheet" href="css/grid.css"/>
+        <link rel="stylesheet" href="css/style.css"/>
+        <style type="text/css">
+            body{
+                font-family: Tahoma;
+                font-size: 14px;
+            }
+            .source{
+                padding:10px;
+            }
+            a{
+                text-decoration: underline;
+                color:#222;
+            }
+            h1{
+                margin: 0px;
+                padding: 0px;
+                margin-bottom: 15px;
+                font-size: 22px;
+            }
+
+            ul{
+                margin: 0px;
+                margin-top:10px;
+                padding: 0px;
+            }
+            li{
+                margin:0px;
+                padding:0px;
+            }
+            h2{
+                margin: 0px;
+                padding: 0px;
+                margin-bottom: 15px;
+                font-size: 18px;
+                font-weight: normal;
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="row">
+            <div class="column grid_12">
+                <h1>Project Lightbulb Examples</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column grid_3">
+                <ul class="menu">
+                    <li><a href="core/auth.html">Core - Login</a></li>
+                    <li><a href="core/newperm.html">Core - New Permission</a></li>
+                    <li><a href="users/getuser.html">Users - Get details</a></li>
+                    <li><a href="users/fqluser.html">Users - Get details by FQL</a></li>
+                    <li><a href="users/getaccounts.html">Users - Get accounts</a></li>
+                    <li><a href="users/getachievements.html">Users - Get achievements*</a></li>
+                    <li><a href="users/getactivities.html">Users - Get activities</a></li>
+                    <li><a href="users/getalbums.html">Users - Get albums</a></li>
+                    <li><a href="users/getappreqs.html">Users - Get app requests</a></li>
+                    <li><a href="users/getbooks.html">Users - Get books</a></li>
+                    <li><a href="dialogs/publishFeed.html">Dialogs -Publish Feed</a></li>
+                    <li><a href="dialogs/publishFeedBackground.html">Dialogs -Publish Feed Background</a></li>
+                    <li><a href="dialogs/makeRequestToOneFriend.html">Dialogs -Make Request To One Friend</a></li>
+                    <li><a href="dialogs/makeRequestToMultipleFriends.html">Dialogs -Make Request To Multiple Friends</a></li>
+                    <li><a href="dialogs/makeFriend.html">Dialogs -Make Friends Request</a></li>
+                    <li><a href="statuses/getStatuses.html">Statuses -Get statuses</a></li>
+                    <li><a href="photo/getPhoto.html">Photos -Get Photo</a></li>
+                    <li><a href="photo/getComments.html">Photos - Get Photo Comments</a></li>
+                    <li><a href="photo/postComment.html">Photos - Post Photo Comment</a></li>
+                    <li><a href="posts/create.html">Posts - Create Post</a></li>
+                    <li><a href="posts/get.html">Posts - Get Post</a></li>
+                    <li><a href="friend/getfriendlist.html">Friend - Get friend list*</a></li>
+                    <li><a href="/samples/albums/create.html">Create album</a></li>
+                    <li><a href="/samples/albums/getalbums.html">Get albums</a></li>
+                    <li><a href="/samples/events/create.html">Create event</a></li>
+                    <li><a href="/samples/events/getevent.html">Get event</a></li>
+                    <li><a href="/samples/events/invite.html">Invite to an event*</a></li>
+                </ul>
+            </div>
+            <div class="column grid_9">
+                <div class="source" id="source">
+
+                </div>
+                <div class="result" id="result">
+
+                </div>
+            </div>
+        </div>
+        <div id="fb-root"></div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".menu").find("a").bind("click",function(e){
+                var href = $(this).attr("href");
+                $("#source").load(href,function(){
+                    $("pre.js").snippet("javascript",{style:"zellner",clipboard:"js/ZeroClipboard.swf"});
+                });
+
+                return false;
+            });
+            LightBulb({
+                apikey:"288048857874241",
+                permissions:'publish_stream, email',
+                callback:function (data) {
+                }
+            });
+        });
+
+    </script>
+
+    </body>
+</html>
